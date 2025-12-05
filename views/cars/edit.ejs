@@ -1,30 +1,55 @@
 <link rel="stylesheet" href="/css/style.css">
+<script src="https://kit.fontawesome.com/26fed4946f.js" crossorigin="anonymous"></script>
+
 <h1><%= `${car.make} ${car.model} ${car.year}` %> <div style="width:50px; height:15px; background:<%= car.color %>; display:inline-block; border-radius: 25px;"></div></h1>
 <form action="/cars/<%=car._id%>?_method=PUT" method="POST">
     <fieldset>
         <legend id="information-legend">Car information</legend>
             <div>
                 <label for="make">Make:</label>
-                <input type="text" name="make" id="make" value="<%= car.make %>" />
+                <div><small>required</small></div>
+                <input type="text" name="make" id="make" value="<%= car.make %>" required/>
             </div>
             <div>
                 <label for="model">Model:</label>
-                <input type="text" name="model" id="model" value="<%= car.model %>"/>
-            </div>
-            <div>
-                <label for="color">Color:</label>
-                <input type="color" name="color" id="color" value="<%= car.color %>"/>
+                <div><small>required</small></div>
+                <input type="text" name="model" id="model" value="<%= car.model %>"required />
             </div>
             <div>
                 <label for="year">Year:</label>
-                <input type="number" name="year" id="year" value="<%= car.year %>" />
+                <div><small>required</small></div>
+                <input type="number" name="year" id="year" value="<%= car.year %>" required />
+            </div>
+            <div>
+                <label for="type">Type of Vehicle:</label>
+                <div><small>required</small></div>
+                <input list="types" id="type" name="type" value="<%= car.type %>"required/>
+                <datalist id="types">
+                  <option value="Sedan"></option>
+                  <option value="SUV"></option>
+                  <option value="Pickup"></option>
+                  <option value="Minivan"></option>
+                  <option value="Hatchback"></option>
+                </datalist>
+            </div>
+            <div>
+                <label for="color">Color:</label>
+                <div><small>required</small></div>
+                <input type="color" name="color" id="color" value="<%= car.color %>" required/>
             </div>
             <div>
                 <label for="isReadyToUse">Ready to Drive?</label>
-                <input type="checkbox" name="isReadyToUse" id="isReadyToUse" <% if (car.isReadyToUse) { %>checked<% } %> />
+                <div><small>required</small></div>
+                <select id="isReadyToUse" name="isReadyToUse"required>
+                    <option value="true" <%= car.isReadyToUse ? "selected" : "" %>>Yes</option>
+                    <option value="false" <%= !car.isReadyToUse ? "selected" : "" %>>No</option>
+                </select>               
+            </div>
+            <div>
+            <button class="submitbtn" type="submit">Update Car</button>
             </div>
     </fieldset>
-    <div>
-    <button type="submit">Update Car</button>
-    </div>
 </form>
+<a href="/cars/">Back to Catalog</a>
+
+<%- include('../partials/footer') %>

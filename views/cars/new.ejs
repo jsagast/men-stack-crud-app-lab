@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create a Fruit</title>
+    <title>Add a Vehicle</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/26fed4946f.js" crossorigin="anonymous"></script>
   </head>
   <a href="/cars/">Back to Catalog</a>
   <body>
@@ -14,28 +15,50 @@
             <legend id="information-legend">Car information</legend>
                 <div>
                     <label for="make">Make:</label>
-                    <input type="text" name="make" id="make" />
+                    <div><small>required</small></div>
+                    <input type="text" name="make" id="make" required/>
                 </div>
                 <div>
                     <label for="model">Model:</label>
-                    <input type="text" name="model" id="model" />
-                </div>
-                <div>
-                    <label for="color">Color:</label>
-                    <input type="color" name="color" id="color" />
+                    <div><small>required</small></div>
+                    <input type="text" name="model" id="model" required/>
                 </div>
                 <div>
                     <label for="year">Year:</label>
-                    <input type="number" name="year" id="year" />
+                    <div><small>required</small></div>
+                    <input type="number" name="year" id="year" required />
+                </div>
+                <div>
+                    <label for="type">Type of Vehicle:</label>
+                    <div><small>required</small></div>
+                    <input list="types" id="type" name="type" required/>
+                    <datalist id="types">
+                      <option value="Sedan"></option>
+                      <option value="SUV"></option>
+                      <option value="Pickup"></option>
+                      <option value="Minivan"></option>
+                      <option value="Hatchback"></option>
+                    </datalist>
+                </div>
+                <div>
+                    <label for="color">Color:</label>
+                    <div><small>required</small></div>
+                    <input type="color" name="color" id="color" required/>
                 </div>
                 <div>
                     <label for="isReadyToUse">Ready to Drive?</label>
-                    <input type="checkbox" name="isReadyToUse" id="isReadyToUse" />
+                    <div><small>required</small></div>
+                    <select id="isReadyToUse" name="isReadyToUse" required>
+                        <option value="" selected disabled hidden>Select</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>               
+                </div>
+                <div>
+                    <button class="submitbtn" type="submit">Add Car</button>
                 </div>
         </fieldset>
-        <div>
-            <button type="submit">Add Car</button>
-        </div>
     </form>
+    <%- include('../partials/footer') %>
   </body>
 </html>

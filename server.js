@@ -7,6 +7,7 @@ const methodOverride = require("method-override"); // new to be able to use meth
 const morgan = require("morgan"); //new
 
 const app = express();//instance to use the server
+const path = require("path");
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -20,7 +21,7 @@ const Car = require("./models/car.js"); // to use model
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method")); // new to use it in form
 app.use(morgan("dev")); //new
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.get("/", async (req, res) => {
@@ -48,7 +49,7 @@ app.get("/cars/:carId", async (req, res) => {
 // POST /cars
 app.post("/cars", async (req, res) => {
     // when receiving the req.body is the object with the data received
-    if (req.body.isReadyToUse === "on") {// transforming on to boolean
+    if (req.body.isReadyToUse === "true") {// transforming on to boolean
       req.body.isReadyToUse = true;
     } else {
       req.body.isReadyToUse = false;
@@ -72,8 +73,8 @@ app.get("/cars/:carId/edit", async (req, res) => {
 
 //UPDATE AFTER EDITING
 app.put("/cars/:carId", async (req, res) => {
-    // Handle the 'isReadyToEat' checkbox data
-    if (req.body.isReadyToUse === "on") {
+    // Handle the 'isReadyToEat' select data
+    if (req.body.isReadyToUse === "true") {
       req.body.isReadyToUse = true;
     } else {
       req.body.isReadyToUse = false;
