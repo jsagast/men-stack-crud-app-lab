@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Catalog</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <a href="/cars/new">Add New Car to Catalog</a>
+  <a href="/">Home</a>
+  <body>
+    <h1>Your Catalog</h1>
+    <ul>
+      <% cars.forEach(car => { %>
+        <li>
+          <!-- <a href="/cars/<%= car._id %>"> <%= `${car.make} ${car.model} ${car.color} ${car.year}` %> </a> -->
+          <a href="/cars/<%= car._id %>"> <%= `${car.make} ${car.model} ${car.year}` %> <div style="width:50px; height:15px; background:<%= car.color %>; display:inline-block; border-radius: 25px;"></div></a>
+
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

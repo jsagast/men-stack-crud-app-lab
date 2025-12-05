@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Fruit</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <a href="/cars/">Back to Catalog</a>
+  <body>
+    <h1>New Available Car? Let's add it!</h1>
+    <form action="/cars" method="POST">
+        <fieldset>
+            <legend id="information-legend">Car information</legend>
+                <div>
+                    <label for="make">Make:</label>
+                    <input type="text" name="make" id="make" />
+                </div>
+                <div>
+                    <label for="model">Model:</label>
+                    <input type="text" name="model" id="model" />
+                </div>
+                <div>
+                    <label for="color">Color:</label>
+                    <input type="color" name="color" id="color" />
+                </div>
+                <div>
+                    <label for="year">Year:</label>
+                    <input type="number" name="year" id="year" />
+                </div>
+                <div>
+                    <label for="isReadyToUse">Ready to Drive?</label>
+                    <input type="checkbox" name="isReadyToUse" id="isReadyToUse" />
+                </div>
+        </fieldset>
+        <div>
+            <button type="submit">Add Car</button>
+        </div>
+    </form>
+  </body>
+</html>

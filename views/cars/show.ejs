@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Show Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <h1><%= `${car.make} ${car.model} ${car.year}` %><span style="width:50px; height:15px; background:<%= car.color %>; display:inline-block; border-radius: 25px;"></span> </h1>
+    <!-- Conditional rendering based on fruit's readiness -->
+    <% if (car.isReadyToUse) { %>
+      <p>This car is available to drive immediately!</p>
+    <% } else { %>
+      <p>This car will be available soon!</p>
+    <% } %>
+
+    <!-- DELETE OPT -->
+    <form action="/cars/<%=car._id%>?_method=DELETE" method="POST">
+        <!-- have to keep the post method but i'm overriding it with DELETE before thanks to middleware -->
+        <button type="submit">Delete <%= car.make %></button>
+    </form>
+
+    <!-- EDIT -->
+    <div>
+    <a href="/cars/<%= car._id %>/edit">Edit My <%= car.make %> Information </a>
+    </div>   
+
+    <!-- Back to catalog -->
+    <a href="/cars/">Back to Catalog</a>
+  </body>
+</html>

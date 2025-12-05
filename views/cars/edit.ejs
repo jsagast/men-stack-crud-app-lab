@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/css/style.css">
+<h1><%= `${car.make} ${car.model} ${car.year}` %> <div style="width:50px; height:15px; background:<%= car.color %>; display:inline-block; border-radius: 25px;"></div></h1>
+<form action="/cars/<%=car._id%>?_method=PUT" method="POST">
+    <fieldset>
+        <legend id="information-legend">Car information</legend>
+            <div>
+                <label for="make">Make:</label>
+                <input type="text" name="make" id="make" value="<%= car.make %>" />
+            </div>
+            <div>
+                <label for="model">Model:</label>
+                <input type="text" name="model" id="model" value="<%= car.model %>"/>
+            </div>
+            <div>
+                <label for="color">Color:</label>
+                <input type="color" name="color" id="color" value="<%= car.color %>"/>
+            </div>
+            <div>
+                <label for="year">Year:</label>
+                <input type="number" name="year" id="year" value="<%= car.year %>" />
+            </div>
+            <div>
+                <label for="isReadyToUse">Ready to Drive?</label>
+                <input type="checkbox" name="isReadyToUse" id="isReadyToUse" <% if (car.isReadyToUse) { %>checked<% } %> />
+            </div>
+    </fieldset>
+    <div>
+    <button type="submit">Update Car</button>
+    </div>
+</form>
